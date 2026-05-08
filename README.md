@@ -12,24 +12,24 @@ PySide6 desktop app for converting JPG, PNG, and EXR image sequences into animat
 - Includes a dark theme and a live frame preview
 - Can be packaged into a Windows executable
 
-## Run GUI
+## Start GUI
 
 ```powershell
-python app.py
+.\dist\SequenceToGif\SequenceToGif.exe
 ```
 
-## Run CLI
+## Use CLI
 
 Convert a folder-based sequence:
 
 ```powershell
-python app.py convert "C:\path\to\sequence_folder" --output "C:\path\to\output.gif"
+.\dist\SequenceToGif\SequenceToGif.exe convert "C:\path\to\sequence_folder" --output "C:\path\to\output.gif"
 ```
 
 Convert an explicit list of files:
 
 ```powershell
-python app.py convert frame_0001.png frame_0002.png frame_0003.png --output out.gif
+.\dist\SequenceToGif\SequenceToGif.exe convert frame_0001.png frame_0002.png frame_0003.png --output out.gif
 ```
 
 Useful CLI options:
@@ -42,6 +42,16 @@ Useful CLI options:
 - `--alpha-threshold 10`
 - `--no-transparency`
 - `--no-dither`
+
+For development without building an exe first, you can still use:
+
+```powershell
+python app.py
+```
+
+```powershell
+python app.py convert "C:\path\to\sequence_folder" --output "C:\path\to\output.gif"
+```
 
 ## Build an executable
 
