@@ -32,6 +32,8 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
     name="SequenceToGif",
     debug=False,
@@ -47,14 +49,4 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=str(assets_dir / "app_icon.ico") if (assets_dir / "app_icon.ico").exists() else None,
-)
-
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.datas,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    name="SequenceToGif",
 )

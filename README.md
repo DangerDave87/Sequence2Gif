@@ -15,7 +15,7 @@ PySide6 desktop app for converting JPG, PNG, and EXR image sequences into animat
 ## Start GUI
 
 ```powershell
-.\dist\SequenceToGif\SequenceToGif.exe
+.\dist\SequenceToGif.exe
 ```
 
 ## Use CLI
@@ -23,13 +23,13 @@ PySide6 desktop app for converting JPG, PNG, and EXR image sequences into animat
 Convert a folder-based sequence:
 
 ```powershell
-.\dist\SequenceToGif\SequenceToGif.exe convert "C:\path\to\sequence_folder" --output "C:\path\to\output.gif"
+.\dist\SequenceToGif.exe convert "C:\path\to\sequence_folder" --output "C:\path\to\output.gif"
 ```
 
 Convert an explicit list of files:
 
 ```powershell
-.\dist\SequenceToGif\SequenceToGif.exe convert frame_0001.png frame_0002.png frame_0003.png --output out.gif
+.\dist\SequenceToGif.exe convert frame_0001.png frame_0002.png frame_0003.png --output out.gif
 ```
 
 Useful CLI options:
@@ -69,7 +69,8 @@ build_exe.bat
 ```
 
 The packaged app will be created in `dist\SequenceToGif\`. Start it with `dist\SequenceToGif\SequenceToGif.exe`. That folder can be copied to another Windows PC without separately installing Python.
-The build script also runs [post_build.py](/C:/Users/daten/Documents/New%20project%202/post_build.py), which prunes unused Qt and Pillow files and removes the extra non-working `dist\SequenceToGif.exe` stub.
+The packaged app will be created as `dist\SequenceToGif.exe`. That single file can be copied to another Windows PC without separately installing Python.
+The build script also runs [post_build.py](/C:/Users/daten/Documents/New%20project%202/post_build.py), which removes any leftover folder-based build output so only the single executable remains.
 
 ## Notes
 
@@ -77,5 +78,5 @@ The build script also runs [post_build.py](/C:/Users/daten/Documents/New%20proje
 - EXR import now prefers `OpenImageIO`, which is a better fit for EXR-heavy workflows and channel-aware image loading.
 - EXR import requires `OpenImageIO`.
 - Build and package the app in an environment where `OpenImageIO` is installed so EXR support is included in the executable.
-- A one-folder build keeps the actual `.exe` much smaller than a single-file PyInstaller build.
-- Most of the remaining size comes from bundled Qt and OpenImageIO runtime files.
+- A single-file build is easier to move around, but it will usually be larger and start a bit slower than a folder-based build.
+- Most of the size comes from bundled Qt, Python, NumPy, Pillow, and OpenImageIO runtime files.
